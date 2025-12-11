@@ -1,0 +1,25 @@
+import React from 'react';
+import Svg, { Path } from 'react-native-svg';
+
+interface EditPhotoIconProps {
+  width?: number;
+  height?: number;
+  color?: string;
+}
+
+export const EditPhotoIcon: React.FC<EditPhotoIconProps> = ({
+  width = 14,
+  height = 19,
+  color = '#252525',
+}) => {
+  return (
+    <Svg width={width} height={height} viewBox="0 0 14 19" fill="none">
+      <Path
+        d="M7.34776 16.2872L12.6365 13.3041M4.44992 4.9638L10.1813 14.6889M6.83485 3.23211C6.92179 3.38193 6.86531 3.57632 6.70871 3.66628L1.95898 6.39468C1.80238 6.48464 1.60494 6.43611 1.518 6.28629C-0.442142 2.90838 0.833221 1.61572 1.97255 0.961255C3.11187 0.306788 4.87144 -0.151437 6.83485 3.23211ZM6.99227 3.50339L12.5556 13.0907C12.6234 13.2075 12.6563 13.3412 12.649 13.4758C12.5573 15.175 12.3229 16.6638 12.1674 17.5094C12.0936 17.9109 11.6872 18.1466 11.2999 18.012C10.4822 17.7278 9.06076 17.1911 7.52755 16.4179C7.40658 16.3569 7.30649 16.2616 7.23868 16.1447L1.67542 6.55757L6.99227 3.50339Z"
+        stroke={color}
+        strokeWidth={1}
+        strokeLinecap="round"
+      />
+    </Svg>
+  );
+};

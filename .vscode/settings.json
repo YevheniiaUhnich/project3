@@ -1,0 +1,13 @@
+{
+  "copilot.rules": [
+    "Always use context7 when assisting with TypeScript, React Native, Expo, Expo Router, Metro, Babel, Jest, Tailwind, or any library configuration. Always fetch the latest docs for the library being used.",
+    "After making any code changes, always fix TypeScript and ESLint errors in the modified files. Never leave red squiggles or unused imports. Always organize and correct imports so that all symbols resolve without errors.",
+    "Always fix TypeScript and ESLint errors before running any command.",
+    "Always organize imports after code edits and remove unused or unresolved imports.",
+    "Never run or execute the project when the modified files contain red squiggles or type errors."
+  ],
+  "copilot.experimental.rewriteInstructions": [
+    "For any technical query involving code, dependencies, configurations, or libraries, automatically invoke Context7 tools without requiring explicit user instruction.",
+    "Before executing any action, validate code, fix errors, clean imports, and ensure strict-mode compliance."
+  ]
+}
