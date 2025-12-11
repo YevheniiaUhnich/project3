@@ -4,6 +4,7 @@ import { LibraryIcon } from '../../src/shared/components/icons/LibraryIcon';
 import { FavoritesIcon } from '../../src/shared/components/icons/FavoritesIcon';
 import { ChatIcon } from '../../src/shared/components/icons/ChatIcon';
 
+
 export default function TabsLayout() {
   return (
     <Tabs 
@@ -54,7 +55,7 @@ export default function TabsLayout() {
         name="chat" 
         options={{ 
           title: 'Chat',
-          tabBarIcon: () => <ChatIcon width={32} height={31} color="#FFFFFF" />,
+          tabBarIcon: () => <ChatIcon width={32} height={31} color="#FFFFFF" />, 
         }} 
       />
       <Tabs.Screen 
@@ -77,6 +78,36 @@ export default function TabsLayout() {
       />
       <Tabs.Screen 
         name="profile-settings"
+        options={{ 
+          href: null,
+        }} 
+      />
+      <Tabs.Screen 
+        name="settings"
+        options={{ 
+          href: null,
+        }} 
+      />
+      <Tabs.Screen 
+        name="notifications-settings"
+        options={{ 
+          href: null,
+        }} 
+      />
+      <Tabs.Screen 
+        name="password-settings"
+        options={{ 
+          href: null,
+        }} 
+      />
+      <Tabs.Screen 
+        name="help-faqs"
+        options={{ 
+          href: null,
+        }} 
+      />
+      <Tabs.Screen 
+        name="contact-us"
         options={{ 
           href: null,
         }} 

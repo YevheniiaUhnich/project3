@@ -12,6 +12,11 @@ import { ArrowRightIcon } from '../../src/shared/components/icons/ArrowRightIcon
 import { SearchIcon } from '../../src/shared/components/icons/SearchIcon';
 import { NotificationIcon } from '../../src/shared/components/icons/NotificationIcon';
 import { UserIcon } from '../../src/shared/components/icons/UserIcon';
+import { StarIcon } from '../../src/shared/components/icons/StarIcon';
+import { ClockIconSmall } from '../../src/shared/components/icons/ClockIconSmall';
+import { FireIconSmall } from '../../src/shared/components/icons/FireIconSmall';
+import { ExerciseIconSmall } from '../../src/shared/components/icons/ExerciseIconSmall';
+import { PlayTriangleIcon } from '../../src/shared/components/icons/PlayTriangleIcon';
 
 type FilterType = 'all' | 'video' | 'article';
 
@@ -27,7 +32,7 @@ export default function FavoritesScreen() {
       duration: '60 Minutes',
       calories: '1320 Kcal',
       exercises: '5 Exercises',
-      image: require('../../assets/images/profile/imageProfile.png'),
+      image: require('../../assets/images/favorites.png/gym 1.png'),
       isFavorite: true,
     },
     {
@@ -35,7 +40,7 @@ export default function FavoritesScreen() {
       type: 'article',
       title: 'Boost Energy and Vitality',
       description: 'Incorporating physical exercise into your daily routine can boost...',
-      image: require('../../assets/images/profile/imageProfile.png'),
+      image: require('../../assets/images/favorites.png/gym 2.png'),
       isFavorite: true,
     },
     {
@@ -45,7 +50,7 @@ export default function FavoritesScreen() {
       duration: '30 Minutes',
       calories: '1210 Kcal',
       exercises: '10 Exercises',
-      image: require('../../assets/images/profile/imageProfile.png'),
+      image: require('../../assets/images/favorites.png/gym 3.png'),
       isFavorite: true,
     },
     {
@@ -53,7 +58,7 @@ export default function FavoritesScreen() {
       type: 'article',
       title: 'Lower Body Blast',
       description: 'A lower body blast is a high-intensity workout focused on targeting...',
-      image: require('../../assets/images/profile/imageProfile.png'),
+      image: require('../../assets/images/favorites.png/gym 4.png'),
       isFavorite: true,
     },
     {
@@ -62,7 +67,54 @@ export default function FavoritesScreen() {
       title: 'Avocado and egg toast',
       duration: '15 Minutes',
       calories: '150 Cal',
-      image: require('../../assets/images/profile/imageProfile.png'),
+      image: require('../../assets/images/favorites.png/eat.png'),
+      isFavorite: true,
+    },
+     {
+      id: 6,
+      type: 'workout',
+      title: 'Loop band Exercises',
+      duration: '45 Minutes',
+      calories: '785 Kcal',
+      exercises: '5 Exercises',
+      image: require('../../assets/images/favorites.png/gym 6.png'),
+      isFavorite: true,
+    },
+    {
+      id: 7,
+      type: 'workout',
+      title: 'dumbbell step up',
+      duration: '12 Minutes',
+      calories: '1385 Kcal',
+      exercises: '3 Exercises',
+      image: require('../../assets/images/favorites.png/gym 7.png'),
+      isFavorite: true,
+    },
+    {
+      id: 8,
+      type: 'workout',
+      title: 'Split Strength Training',
+      duration: '12 Minutes',
+      calories: '1250 Kcal',
+      exercises: '5 Exercises',
+      image: require('../../assets/images/favorites.png/gym 8.png'),
+      isFavorite: true,
+    },
+        {
+      id: 9,
+      type: 'recipe',
+      title: 'fruit smoothie',
+      duration: '12 Minutes',
+      calories: '120 Cal',
+      image: require('../../assets/images/favorites.png/eat 2.png'),
+      isFavorite: true,
+    },
+    {
+      id: 10,
+      type: 'article',
+      title: 'Hydrate Properly',
+      description: 'Stay hydrated before, during, and after your workouts to optimize...',
+      image: require('../../assets/images/favorites.png/gym 9.png'),
       isFavorite: true,
     },
   ];
@@ -133,7 +185,14 @@ export default function FavoritesScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {favoriteItems.map((item) => (
+        {favoriteItems
+          .filter((item) => {
+            if (activeFilter === 'all') return true;
+            if (activeFilter === 'video') return item.type === 'workout';
+            if (activeFilter === 'article') return item.type === 'article' || item.type === 'recipe';
+            return true;
+          })
+          .map((item) => (
           <View key={item.id} style={styles.card}>
             <View style={styles.cardContent}>
               {item.type === 'article' ? (
@@ -147,20 +206,20 @@ export default function FavoritesScreen() {
                   <View style={styles.cardDetails}>
                     {item.duration && (
                       <View style={styles.detailItem}>
-                        <Text style={styles.detailIcon}>⏱</Text>
+                        <ClockIconSmall width={9} height={9} color="#232323" />
                         <Text style={styles.detailText}>{item.duration}</Text>
                       </View>
                     )}
                     {item.calories && (
                       <View style={styles.detailItem}>
-                        <Text style={styles.detailIcon}>🔥</Text>
+                        <FireIconSmall width={7} height={9} color="#232323" />
                         <Text style={styles.detailText}>{item.calories}</Text>
                       </View>
                     )}
                   </View>
                   {item.exercises && (
                     <View style={styles.detailItem}>
-                      <Text style={styles.detailIcon}>💪</Text>
+                      <ExerciseIconSmall width={7} height={8} color="#232323" />
                       <Text style={styles.detailText}>{item.exercises}</Text>
                     </View>
                   )}
@@ -172,13 +231,13 @@ export default function FavoritesScreen() {
               <Image source={item.image} style={styles.cardImage} />
               {item.type === 'workout' && (
                 <TouchableOpacity style={styles.playButton}>
-                  <Text style={styles.playIcon}>▶️</Text>
+                  <PlayTriangleIcon width={8} height={10} color="#FFFFFF" />
                 </TouchableOpacity>
               )}
             </View>
             
             <TouchableOpacity style={styles.favoriteButton}>
-              <Text style={styles.favoriteIcon}>⭐</Text>
+              <StarIcon width={15} height={14.063} color="#E2F163" />
             </TouchableOpacity>
           </View>
         ))}
@@ -214,7 +273,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#896CFE',
     flex: 1,
-    marginLeft: 12,
+   
   },
   headerIcons: {
     flexDirection: 'row',
@@ -237,6 +296,7 @@ const styles = StyleSheet.create({
     gap: 10,
     marginTop: -20,
     marginBottom: 10,
+    marginLeft: 36,
   },
   sortByText: {
     fontSize: 12,
@@ -249,10 +309,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 15,
     width: 71,
-    paddingVertical: 8,
+    paddingVertical: 2,
     borderRadius: 38,
-    height: 17.138,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   filterButtonActive: {
     backgroundColor: '#E2F163',
@@ -261,11 +321,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#232323',
     fontWeight: '400',
+    lineHeight: 14,
   },
   filterTextActive: {
-     fontSize: 12,
+    fontSize: 12,
     color: '#232323',
     fontWeight: '500',
+    lineHeight: 14,
   },
   scrollView: {
     flex: 1,
@@ -331,14 +393,15 @@ const styles = StyleSheet.create({
   },
   playButton: {
     position: 'absolute',
-    bottom: 12,
-    right: 12,
-    width: 32,
-    height: 32,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    borderRadius: 16,
+    top: '50%',
+    left: '50%',
+    width: 18,
+    height: 18,
+    backgroundColor: '#896CFE',
+    borderRadius: 9,
     justifyContent: 'center',
     alignItems: 'center',
+    transform: [{ translateX: -9 }, { translateY: -9 }],
   },
   playIcon: {
     fontSize: 14,

@@ -40,8 +40,8 @@ export default function ProfileScreen() {
     { title: 'Profile', onPress: () => router.push('/(tabs)/profile-settings') },
     { title: 'Favorite', onPress: () => router.push('/(tabs)/favorites') },
     { title: 'Privacy Policy', onPress: () => console.log('Privacy Policy pressed') },
-    { title: 'Settings', onPress: () => console.log('Settings pressed') },
-    { title: 'Help', onPress: () => console.log('Help pressed') },
+    { title: 'Settings', onPress: () => router.push('/(tabs)/settings') },
+    { title: 'Help', onPress: () => router.push('/(tabs)/help-faqs') },
     { title: 'Logout', onPress: handleLogout },
   ];
 
